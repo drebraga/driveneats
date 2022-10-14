@@ -394,9 +394,43 @@
         </div>
     </div>
     <div class="rod">
-        <input onclick="fecharPedido()" class="botaoDisable" type="button" value=' Selecione os 3 itens 
-para fechar o pedido' 
-        disabled />
+        <input onclick="confirmarPedido()" class="botaoDisable" type="button" value=' Selecione os 3 itens 
+para fechar o pedido' disabled />
+    </div>
+
+    <!--Bonus-->
+    <div class="total fundobranco escondidoBonus">
+        <div class="detalhesPedido">
+            <div class="conf1">
+                <h1>Confirme seu pedido</h1>
+            </div>
+            <div class="conf2">
+                <div class="confLinha">
+                    <p class="pratoConfirm">NomePrato</p>
+                    <p class="precoPratoConfirm precoDireita">PreçoPrato</p>
+                </div>
+                <div class="confLinha">
+                    <p class="bebidaConfirm">NomeBebida</p>
+                    <p class="precoBebidaConfirm precoDireita">PreçoBebida</p>
+                </div>
+                <div class="confLinha">
+                    <p class="sobreConfirm">NomeSobre</p>
+                    <p class="precoSobreConfirm precoDireita">PrecoSobre</p>
+                </div>
+                <div class="totalConfirm confLinha">
+                    <p>TOTAL</p>
+                    <p class="valorTotalConfirm precoDireita">ValorTotal</p>
+                </div>
+            </div>
+            <div class="conf3" onclick="fecharPedido()">
+                <p>Tudo certo, pode pedir!</p>
+            </div>
+            <div class="conf4" onclick="cancelarPedido()">
+                <div class="cancelarPedido">
+                    <p>Cancelar</p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="script.js"></script>

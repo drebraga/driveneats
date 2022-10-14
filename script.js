@@ -69,17 +69,56 @@ para fechar o pedido`;
         botaoEnable.classList.add('botaoEnable');
     }
 }
-function fecharPedido() {
-    const precoP = document.querySelector('.selectprato')
+
+function confirmarPedido() {
+    //Aparece o bonus
+    const bonus = document.querySelector('.total');
+    bonus.classList.remove('escondidoBonus');
+    // Elementos selecionados
+    const precoP = document.querySelector('.selectprato');
     const precoB = document.querySelector('.selectbebida');
     const precoS = document.querySelector('.selectsobremesa');
     // Pega os nomes
     const nomePrato = String(precoP.children[1].innerText);
-    console.log(nomePrato);
     const nomeBebida = String(precoB.children[1].innerText);
-    console.log(nomeBebida);
     const nomeSobre = String(precoS.children[1].innerText);
-    console.log(nomeSobre);
+    // Pega os preços em texto
+    const precoTextoP = String(precoP.children[3].innerText);
+    const precoTextoB = String(precoB.children[3].innerText);
+    const precoTextoS = String(precoS.children[3].innerText);
+    // Calcula os preços
+    const precoP_string = precoTextoP.replace(/[^0-9]/g, '');
+    const precoPrato = Number(precoP_string) / 100;
+    const precoB_string = precoTextoB.replace(/[^0-9]/g, '');
+    const precoBebida = Number(precoB_string) / 100;
+    const precoS_string = precoTextoS.replace(/[^0-9]/g, '');
+    const precoSobre = Number(precoS_string) / 100;
+    let total = precoPrato + precoBebida + precoSobre;
+    total = String(total.toFixed(2));
+    // Muda texto para os nomes dos itens
+    document.querySelector('.pratoConfirm').innerText = nomePrato;
+    document.querySelector('.bebidaConfirm').innerText = nomeBebida;
+    document.querySelector('.sobreConfirm').innerText = nomeSobre;
+    // Muda texto para o valor dos itens
+    document.querySelector('.precoPratoConfirm').innerText = precoTextoP;
+    document.querySelector('.precoBebidaConfirm').innerText = precoTextoB;
+    document.querySelector('.precoSobreConfirm').innerText = precoTextoS;
+    document.querySelector('.valorTotalConfirm').innerText = 'R$ '+total;
+}
+
+function cancelarPedido() {
+    const bonus = document.querySelector('.total');
+    bonus.classList.add('escondidoBonus');
+}
+
+function fecharPedido() {
+    const precoP = document.querySelector('.selectprato');
+    const precoB = document.querySelector('.selectbebida');
+    const precoS = document.querySelector('.selectsobremesa');
+    // Pega os nomes
+    const nomePrato = String(precoP.children[1].innerText);
+    const nomeBebida = String(precoB.children[1].innerText);
+    const nomeSobre = String(precoS.children[1].innerText);
     // Pega os preços
     const precoP_string = String(precoP.children[3].innerText).replace(/[^0-9]/g, '');
     const precoPrato = Number(precoP_string) / 100;
@@ -90,9 +129,9 @@ function fecharPedido() {
     let total = precoPrato + precoBebida + precoSobre;
     total = total.toFixed(2);
 
-    const uri = "Olá, gostaria de fazer o pedido: \n - Prato: "+nomePrato+"\n - Bebida: "+nomeBebida+"\n - Sobremesa: "+nomeSobre+"\n Total: R$ "+total;
-
+    const uri = "Olá, gostaria de fazer o pedido: \n - Prato: " + nomePrato + "\n - Bebida: " + nomeBebida + "\n - Sobremesa: " + nomeSobre + "\n Total: R$ " + total;
     const encoded1 = encodeURIComponent(uri);
     window.open("https://wa.me/5561981954985?text=" + encoded1, '_blank');
 
 }
+
