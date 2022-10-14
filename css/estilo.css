@@ -102,6 +102,10 @@ p {
     width: 144px;
     height: 87px;
     border-radius: 4px;
+    object-fit: scale-down;
+}
+.subbaixo img, .subcima img {
+    object-fit: cover;
 }
 .nomeprato {
     font-weight: 700;

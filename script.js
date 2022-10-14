@@ -90,11 +90,7 @@ function fecharPedido() {
     let total = precoPrato + precoBebida + precoSobre;
     total = total.toFixed(2);
 
-    const uri = `Olá, gostaria de fazer o pedido:
-- Prato: ${nomePrato}
-- Bebida: ${nomeBebida}
-- Sobremesa: ${nomeSobre}
-Total: R$ ${total}`;
+    const uri = "Olá, gostaria de fazer o pedido: \n - Prato: "+nomePrato+"\n - Bebida: "+nomeBebida+"\n - Sobremesa: "+nomeSobre+"\n Total: R$ "+total;
 
     const encoded1 = encodeURIComponent(uri);
     window.open("https://wa.me/5561981954985?text=" + encoded1, '_blank');
