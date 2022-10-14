@@ -1,9 +1,9 @@
 
 function selectPrato(i) {
-    let prato = '.prato' + i;
-    let elementoAtivo = document.querySelector(prato);
-    let classeElAtv = String(document.querySelector(prato).classList);
-    let res = classeElAtv.indexOf('selectprato');
+    const prato = '.prato' + i;
+    const elementoAtivo = document.querySelector(prato);
+    const classeElAtv = String(document.querySelector(prato).classList);
+    const res = classeElAtv.indexOf('selectprato');
     if (res == -1) {
         for (let a = 1; a < 8; a++) {
             const pratoi = '.prato' + a;
@@ -17,10 +17,10 @@ function selectPrato(i) {
     }
 }
 function selectBebida(i) {
-    let bebida = '.bebida' + i;
-    let elementoAtivo = document.querySelector(bebida);
-    let classeElAtv = String(document.querySelector(bebida).classList);
-    let res = classeElAtv.indexOf('selectbebida');
+    const bebida = '.bebida' + i;
+    const elementoAtivo = document.querySelector(bebida);
+    const classeElAtv = String(document.querySelector(bebida).classList);
+    const res = classeElAtv.indexOf('selectbebida');
     if (res == -1) {
         for (let a = 1; a < 8; a++) {
             const bebidai = '.bebida' + a;
@@ -34,10 +34,10 @@ function selectBebida(i) {
     }
 }
 function selectSobremesa(i) {
-    let sobremesa = '.sobremesa' + i;
-    let elementoAtivo = document.querySelector(sobremesa);
-    let classeElAtv = String(document.querySelector(sobremesa).classList);
-    let res = classeElAtv.indexOf('selectsobremesa');
+    const sobremesa = '.sobremesa' + i;
+    const elementoAtivo = document.querySelector(sobremesa);
+    const classeElAtv = String(document.querySelector(sobremesa).classList);
+    const res = classeElAtv.indexOf('selectsobremesa');
     if (res == -1) {
         for (let a = 1; a < 8; a++) {
             const sobremesai = '.sobremesa' + a;
@@ -53,37 +53,37 @@ function selectSobremesa(i) {
 function buttonEnable() {
     // Desabilita o botão
     document.querySelector('.botaoDisable').disabled = true;
-    let botaoDisable = document.querySelector('.botaoDisable');
+    const botaoDisable = document.querySelector('.botaoDisable');
     document.querySelector('.botaoDisable').value = 'Selecione os 3 itens para fechar o pedido';
     botaoDisable.classList.remove('botaoEnable');
 
     // Preço do prato
-    let precoP = document.querySelector('.selectprato');
-    let precoP_string = String(precoP.children[3].innerText).replace(/[^0-9]/g, '');
-    let precoPrato = Number(precoP_string) / 100;
+    const precoP = document.querySelector('.selectprato')
 
     // Preço da Bebida
-    let precoB = document.querySelector('.selectbebida');
-    let precoB_string = String(precoB.children[3].innerText).replace(/[^0-9]/g, '');
-    let precoBebida = Number(precoB_string) / 100;
+    const precoB = document.querySelector('.selectbebida');
 
     // Preço da Sobremesa
-    let precoS = document.querySelector('.selectsobremesa');
-    let precoS_string = String(precoS.children[3].innerText).replace(/[^0-9]/g, '');
-    let precoSobre = Number(precoS_string) / 100;
-
-    console.log(precoPrato);
-    console.log(precoBebida);
-    console.log(precoSobre);
+    const precoS = document.querySelector('.selectsobremesa');
 
     // Condicional para Habilitar o botão de fechar pedido.
-    if (precoPrato !== null && precoBebida !== null && precoSobre !== null) {
+    if (precoP !== null && precoB !== null && precoS !== null) {
         document.querySelector('.botaoDisable').disabled = false;
         document.querySelector('.botaoDisable').value = 'Fechar pedido';
-        let botaoEnable = document.querySelector('.botaoDisable');
+        const botaoEnable = document.querySelector('.botaoDisable');
         botaoEnable.classList.add('botaoEnable');
+
+        const precoP_string = String(precoP.children[3].innerText).replace(/[^0-9]/g, '');
+        const precoPrato = Number(precoP_string) / 100;
+        console.log(precoPrato);
+        const precoB_string = String(precoB.children[3].innerText).replace(/[^0-9]/g, '');
+        const precoBebida = Number(precoB_string) / 100;
+        console.log(precoBebida);
+        const precoS_string = String(precoS.children[3].innerText).replace(/[^0-9]/g, '');
+        const precoSobre = Number(precoS_string) / 100;
+        console.log(precoSobre);
     }
 }
 function fecharPedido() {
-    console.log('FUNÇÃO PARA FECHAR PEDIDO');
+    console.log('FUNÇÃO PARA ENCAMINHAR CLIENTE PARA O WPP');
 }
