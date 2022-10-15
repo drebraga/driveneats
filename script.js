@@ -82,20 +82,23 @@ function confirmarPedido() {
     let precoTextoP = String(precoP.children[3].innerText);
     let precoTextoB = String(precoB.children[3].innerText);
     let precoTextoS = String(precoS.children[3].innerText);
-    // Calcula os preços
+    // Calcula o total
     let precoPrato = Number(precoTextoP.replace(/[^0-9]/g, '')) / 100;
     let precoBebida = Number(precoTextoB.replace(/[^0-9]/g, '')) / 100;
     let precoSobre = Number(precoTextoS.replace(/[^0-9]/g, '')) / 100;
     total = precoPrato + precoBebida + precoSobre;
+    precoPrato = String(precoPrato.toFixed(2).replace('.', ','));
+    precoBebida = String(precoBebida.toFixed(2).replace('.', ','));
+    precoSobre = String(precoSobre.toFixed(2).replace('.', ','));
     total = String(total.toFixed(2).replace('.', ','));
     // Muda texto para os nomes dos itens
     document.querySelector('.pratoConfirm').innerText = nomePrato;
     document.querySelector('.bebidaConfirm').innerText = nomeBebida;
     document.querySelector('.sobreConfirm').innerText = nomeSobre;
     // Muda texto para o valor dos itens
-    document.querySelector('.precoPratoConfirm').innerText = precoTextoP;
-    document.querySelector('.precoBebidaConfirm').innerText = precoTextoB;
-    document.querySelector('.precoSobreConfirm').innerText = precoTextoS;
+    document.querySelector('.precoPratoConfirm').innerText = precoPrato;
+    document.querySelector('.precoBebidaConfirm').innerText = precoBebida;
+    document.querySelector('.precoSobreConfirm').innerText = precoSobre;
     document.querySelector('.valorTotalConfirm').innerText = 'R$ ' + total;
     return (nomeCliente,endCliente,nomePrato, nomeBebida, nomeSobre, total);
 }
@@ -105,7 +108,7 @@ function cancelarPedido() {
 }
 // Finaliza o pedido e vai para encaminha a mensagem no wpp
 function fecharPedido() {
-    const uri = "Olá, gostaria de fazer o pedido: \n - Prato: " + nomePrato + "\n - Bebida: " + nomeBebida + "\n - Sobremesa: " + nomeSobre + "\n Total: R$ " + total + "\n\n Nome: " + nomeCliente + "\n Endereço: " + endCliente;
+    const uri = `Olá, gostaria de fazer o pedido:\n- Prato: ${nomePrato}\n- Bebida: ${nomeBebida}\n- Sobremesa: ${nomeSobre}\nTotal: R$ ${total}\n\nNome: ${nomeCliente}\nEndereço: ${endCliente}`;
     const encoded1 = encodeURIComponent(uri);
     window.open("https://wa.me/5561981954985?text=" + encoded1, '_blank');
 }
