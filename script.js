@@ -1,11 +1,6 @@
-
-let precoP = null;
-let precoB = null;
-let precoS = null;
-let nomePrato = null;
-let nomeBebida = null;
-let nomeSobre = null;
-let total = null;
+// Variáveis
+let precoP = null; let precoB = null; let precoS = null; let nomePrato = null; let nomeBebida = null;
+let nomeSobre = null; let total = null; let nomeCliente = null; let endCliente = null;
 //
 const bonus = document.querySelector('.total');
 // Seleciona e define qual o prato/bebida/sobremesa foi selecionado
@@ -72,9 +67,11 @@ function buttonEnable() {
         document.querySelector('.botaoDisable').classList.remove('botaoEnable');
     }
 }
-
+// BONUS 2 ---------------------------------------------------------
 function confirmarPedido() {
     // BONUS 1 -----------------------------------------------------
+    nomeCliente = prompt("Digite seu nome:");
+    endCliente = prompt("Digite o endereço da entrega:");
     //Aparece o bonus
     bonus.classList.remove('escondidoBonus');
     // Pega os nomes
@@ -100,17 +97,16 @@ function confirmarPedido() {
     document.querySelector('.precoBebidaConfirm').innerText = precoTextoB;
     document.querySelector('.precoSobreConfirm').innerText = precoTextoS;
     document.querySelector('.valorTotalConfirm').innerText = 'R$ ' + total;
-    return (nomePrato,nomeBebida,nomeSobre,total);
+    return (nomeCliente,endCliente,nomePrato, nomeBebida, nomeSobre, total);
 }
-
+// Cancela e volta para a seleção
 function cancelarPedido() {
     bonus.classList.add('escondidoBonus');
 }
-
+// Finaliza o pedido e vai para encaminha a mensagem no wpp
 function fecharPedido() {
-    const uri = "Olá, gostaria de fazer o pedido: \n - Prato: " + nomePrato + "\n - Bebida: " + nomeBebida + "\n - Sobremesa: " + nomeSobre + "\n Total: R$ " + total;
+    const uri = "Olá, gostaria de fazer o pedido: \n - Prato: " + nomePrato + "\n - Bebida: " + nomeBebida + "\n - Sobremesa: " + nomeSobre + "\n Total: R$ " + total + "\n\n Nome: " + nomeCliente + "\n Endereço: " + endCliente;
     const encoded1 = encodeURIComponent(uri);
     window.open("https://wa.me/5561981954985?text=" + encoded1, '_blank');
-
 }
 
